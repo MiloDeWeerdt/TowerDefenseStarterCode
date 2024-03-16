@@ -11,3 +11,9 @@ public enum Path
     Path2
 
 }
+public enum TowerType
+{
+    Archer,
+    Sword,
+    Wizard
+}
