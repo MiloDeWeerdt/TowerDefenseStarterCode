@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public static EnemySpawner Instance { get; private set; }
+    public static EnemySpawner Instance;
     // Start is called before the first frame update
     public List<GameObject> Path1 = new List<GameObject>();
     public List<GameObject> Path2 = new List<GameObject>();
@@ -25,7 +25,13 @@ public class EnemySpawner : MonoBehaviour
         var newEnemy = Instantiate(Enemies[type], Path1[0].transform.position, Path1[0].transform.rotation);
         var script = newEnemy.GetComponentInParent<Enemy>();
         // set hier het path en target voor je enemy in 
-        path=path.gameObject;
+        script.path = path;
+        script.target= Path1[1];
+    }
+    
+    void Start()
+    {
+        InvokeRepeating("SpawnTester", 1f, 1f);
     }
     private void SpawnTester()
     {
@@ -33,36 +39,20 @@ public class EnemySpawner : MonoBehaviour
         SpawnEnemy(0, Path.Path1);
 
     }
-    void Start()
-    {
-        InvokeRepeating("SpawnTester", 1f, 1f);
-    }
     public GameObject RequestTarget(Path path, int index)
 
     {
-        if(path == Path.Path1)
+        List<GameObject> selectedPath = path == Path.Path1 ? Path1 : Path2;
+
+        if (index < selectedPath.Count)
         {
-            if (index < path1Waypoints.Length - 1)
-            {
-                return path1Waypoints[index + 1];
-            }
-            else
-            {
-                return null;
-            }
+            return selectedPath[index];
         }
         else
         {
-            if (index < path2Waypoints.Length - 1)
-            {
-                return path2Waypoints[index + 1];
-            }
-            else
-            {
-                return null;
-            }
+            return null;
         }
-        
+
 
     }
 

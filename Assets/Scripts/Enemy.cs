@@ -11,13 +11,16 @@ public class Enemy : MonoBehaviour
     public GameObject target { get; set; }
     private int pathIndex = 1;
     // Start is called before the first frame update
-    private void SpawnTester()
-    {
-
-       
-
-    }
+    
     void Start()
+    {
+       
+    }
+
+    // Update is called once per frame
+    
+
+    void Update()
     {
         float step = speed * Time.deltaTime;
         transform.position = Vector2.MoveTowards(transform.position, target.transform.position, step);
@@ -25,7 +28,7 @@ public class Enemy : MonoBehaviour
         if (Vector2.Distance(transform.position, target.transform.position) < 0.1f)
         {
             // if close, request a new waypoint 
-            target = EnemySpawner.Get.RequestTarget(path, pathIndex);
+            target = EnemySpawner.Instance.RequestTarget(path, pathIndex);
             pathIndex++;
             // if target is null, we have reached the end of the path.
             // Destroy the enemy at this point 
@@ -34,13 +37,5 @@ public class Enemy : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-    }
-
-    // Update is called once per frame
-    
-
-    void Update()
-    {
-        
     }
 }
