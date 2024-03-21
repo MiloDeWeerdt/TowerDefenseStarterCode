@@ -1,10 +1,10 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/TowerMenu.uss?fileID=7433441132597879392&amp;guid=6a6f57cf3e04ee444bb0a8ddf421b236&amp;type=3#TowerMenu" />
-    <ui:VisualElement style="flex-grow: 1; height: 656px; width: 930px;">
-        <ui:Button text="archer" parse-escape-sequences="true" display-tooltip-when-elided="true" name="archer" class="button" />
-        <ui:Button text="sword" parse-escape-sequences="true" display-tooltip-when-elided="true" name="sword" class="button" />
-        <ui:Button text="wizard" parse-escape-sequences="true" display-tooltip-when-elided="true" name="wizard" class="button" />
-        <ui:Button text="upgrade" parse-escape-sequences="true" display-tooltip-when-elided="true" name="upgrade" class="button" />
-        <ui:Button text="destroy" parse-escape-sequences="true" display-tooltip-when-elided="true" name="destroy" class="button" />
+    <ui:VisualElement style="flex-grow: 1; height: 656px; width: 263px; -unity-background-image-tint-color: rgb(255, 255, 255);">
+        <ui:Button text="archer-tower" parse-escape-sequences="true" display-tooltip-when-elided="true" name="archer-button" class="button" />
+        <ui:Button text="sword-tower" parse-escape-sequences="true" display-tooltip-when-elided="true" name="sword-button" class="button" />
+        <ui:Button text="wizard-tower" parse-escape-sequences="true" display-tooltip-when-elided="true" name="wizard-button" class="button" />
+        <ui:Button text="upgrade" parse-escape-sequences="true" display-tooltip-when-elided="true" name="button-upgrade" class="button" />
+        <ui:Button text="destroy" parse-escape-sequences="true" display-tooltip-when-elided="true" name="button-destroy" class="button" />
     </ui:VisualElement>
 </ui:UXML>

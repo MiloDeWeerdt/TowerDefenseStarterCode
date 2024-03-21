@@ -1,207 +1,207 @@
-using UnityEngine; 
+using UnityEngine;
 
-using UnityEngine.UIElements; 
+using UnityEngine.UIElements;
 
- 
 
-public class TowerMenu : MonoBehaviour 
 
-{ 
+public class TowerMenu : MonoBehaviour
 
-    private Button archerButton; 
+{
 
-    private Button swordButton; 
+    private Button archerButton;
 
-    private Button wizardButton; 
+    private Button swordButton;
 
-    private Button updateButton; 
+    private Button wizardButton;
 
-    private Button destroyButton; 
+    private Button updateButton;
 
- 
+    private Button destroyButton;
 
-    private VisualElement root; 
 
- 
 
-    void Start() 
+    private VisualElement root;
 
-    { 
 
-        root =  GetComponent<UIDocument>().rootVisualElement; 
 
- 
+    void Start()
 
-        archerButton = root.Q<Button>("archer button"); 
+    {
 
-        swordButton = root.Q<Button>("sword button"); 
+        root = GetComponent<UIDocument>().rootVisualElement;
 
-        wizardButton = root.Q<Button>("wizard button"); 
 
-        updateButton = root.Q<Button>("button upgrade"); 
 
-        destroyButton = root.Q<Button>("button destroy"); 
+        archerButton = root.Q<Button>("archer-button");
 
- 
+        swordButton = root.Q<Button>("sword-button");
 
-        if (archerButton != null) 
+        wizardButton = root.Q<Button>("wizard-button");
 
-        { 
+        updateButton = root.Q<Button>("button-upgrade");
 
-            archerButton.clicked += OnArcherButtonClicked; 
+        destroyButton = root.Q<Button>("button-destroy");
 
-        } 
 
- 
 
-        if (swordButton != null) 
+        if (archerButton != null)
 
-        { 
+        {
 
-            swordButton.clicked += OnSwordButtonClicked; 
+            archerButton.clicked += OnArcherButtonClicked;
 
-        } 
+        }
 
- 
 
-        if (wizardButton != null) 
 
-        { 
+        if (swordButton != null)
 
-            wizardButton.clicked += OnWizardButtonClicked; 
+        {
 
-        } 
+            swordButton.clicked += OnSwordButtonClicked;
 
- 
+        }
 
-        if (updateButton != null) 
 
-        { 
 
-            updateButton.clicked += OnUpdateButtonClicked; 
+        if (wizardButton != null)
 
-        } 
+        {
 
- 
+            wizardButton.clicked += OnWizardButtonClicked;
 
-        if (destroyButton != null) 
+        }
 
-        { 
 
-            destroyButton.clicked += OnDestroyButtonClicked; 
 
-        } 
+        if (updateButton != null)
 
- 
+        {
 
-        root.visible = false; 
+            updateButton.clicked += OnUpdateButtonClicked;
 
-    } 
+        }
 
- 
 
-    private void OnArcherButtonClicked() 
 
-    { 
+        if (destroyButton != null)
 
- 
+        {
 
-    } 
+            destroyButton.clicked += OnDestroyButtonClicked;
 
- 
+        }
 
-    private void OnSwordButtonClicked() 
 
-    { 
 
- 
+        root.visible = false;
 
-    } 
+    }
 
- 
 
-    private void OnWizardButtonClicked() 
 
-    { 
+    private void OnArcherButtonClicked()
 
- 
+    {
 
-    } 
 
- 
 
-    private void OnUpdateButtonClicked() 
+    }
 
-    { 
 
- 
 
-    } 
+    private void OnSwordButtonClicked()
 
- 
+    {
 
-    private void OnDestroyButtonClicked() 
 
-    { 
 
- 
+    }
 
-    } 
 
- 
 
-    private void OnDestroy() 
+    private void OnWizardButtonClicked()
 
-    { 
+    {
 
-        if (archerButton != null) 
 
-        { 
 
-            archerButton.clicked -= OnArcherButtonClicked; 
+    }
 
-        } 
 
- 
 
-        if (swordButton != null) 
+    private void OnUpdateButtonClicked()
 
-        { 
+    {
 
-            swordButton.clicked -= OnSwordButtonClicked; 
 
-        } 
 
- 
+    }
 
-        if (wizardButton != null) 
 
-        { 
 
-            wizardButton.clicked -= OnWizardButtonClicked; 
+    private void OnDestroyButtonClicked()
 
-        } 
+    {
 
- 
 
-        if (updateButton != null) 
 
-        { 
+    }
 
-            updateButton.clicked -= OnUpdateButtonClicked; 
 
-        } 
 
- 
+    private void OnDestroy()
 
-        if (destroyButton != null) 
+    {
 
-        { 
+        if (archerButton != null)
 
-            destroyButton.clicked -= OnArcherButtonClicked; 
+        {
 
-        } 
+            archerButton.clicked -= OnArcherButtonClicked;
 
-    } 
+        }
 
-} 
+
+
+        if (swordButton != null)
+
+        {
+
+            swordButton.clicked -= OnSwordButtonClicked;
+
+        }
+
+
+
+        if (wizardButton != null)
+
+        {
+
+            wizardButton.clicked -= OnWizardButtonClicked;
+
+        }
+
+
+
+        if (updateButton != null)
+
+        {
+
+            updateButton.clicked -= OnUpdateButtonClicked;
+
+        }
+
+
+
+        if (destroyButton != null)
+
+        {
+
+            destroyButton.clicked -= OnArcherButtonClicked;
+
+        }
+
+    }
+
+}
