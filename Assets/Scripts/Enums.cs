@@ -17,3 +17,10 @@ public enum TowerType
     Sword,
     Wizard
 }
+public enum SiteLevel
+{
+    Onbebouwd, 
+    Level1, 
+    Level2, 
+    Level3
+}
