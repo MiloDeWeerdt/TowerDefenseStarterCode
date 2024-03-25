@@ -323,14 +323,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TowerMenu: {fileID: 129374350}
   Archers:
+  - {fileID: 0}
   - {fileID: 6260443418514803871, guid: e3db4af13e8ca5544b007805ee0c66a1, type: 3}
   - {fileID: 5487536896610302223, guid: 49b2d041a9541d5409b4c39b6a31bb1d, type: 3}
   - {fileID: 5512071421688675151, guid: 2a31f2d77e60ee645a645603c1e33407, type: 3}
   Swords:
+  - {fileID: 0}
   - {fileID: 880387946105253969, guid: 22f9987f208ad18489c43473acd34fa3, type: 3}
   - {fileID: 2169565330035720614, guid: 0869c390fcafa164e80c46a1b1f25231, type: 3}
   - {fileID: 2547669888859418333, guid: 24ec7d4cb5d6e5a4b8919d3cdd4a134a, type: 3}
   Wizards:
+  - {fileID: 0}
   - {fileID: 1037069406432678467, guid: 2940adc739f5f114dbf4024dc954cfad, type: 3}
   - {fileID: 4856504979477270589, guid: d26590511f9d94249af27786a4a03345, type: 3}
   - {fileID: 9075842702940287679, guid: dee704b3725562f4096405a0e2242c21, type: 3}

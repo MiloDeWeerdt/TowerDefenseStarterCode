@@ -15,11 +15,12 @@ public enum TowerType
 {
     Archer,
     Sword,
-    Wizard
+    Wizard,
+    Onbebouwd
 }
 public enum SiteLevel
 {
-    Onbebouwd, 
+    Level0, 
     Level1, 
     Level2, 
     Level3

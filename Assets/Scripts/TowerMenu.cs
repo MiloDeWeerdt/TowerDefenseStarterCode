@@ -104,7 +104,7 @@ public class TowerMenu : MonoBehaviour
 
     {
 
-
+        GameManager.Instance.Build(TowerType.Archer, SiteLevel.Level1);
 
     }
 
@@ -114,7 +114,7 @@ public class TowerMenu : MonoBehaviour
 
     {
 
-
+        GameManager.Instance.Build(TowerType.Sword, SiteLevel.Level1);
 
     }
 
@@ -124,7 +124,7 @@ public class TowerMenu : MonoBehaviour
 
     {
 
-
+        GameManager.Instance.Build(TowerType.Wizard, SiteLevel.Level1);
 
     }
 
@@ -133,8 +133,11 @@ public class TowerMenu : MonoBehaviour
     private void OnUpdateButtonClicked()
 
     {
-
-
+        if (selectedSite != null)
+        {
+            SiteLevel nextLevel = selectedSite.Level + 1; // Verhoog het level met één.
+            GameManager.Instance.Build(selectedSite.TowerType, nextLevel);
+        }
 
     }
 
@@ -144,7 +147,11 @@ public class TowerMenu : MonoBehaviour
 
     {
 
-
+        if (selectedSite == null)
+        {
+            return;
+        }
+        selectedSite.SetTower(null, SiteLevel.Level0, TowerType.Onbebouwd);
 
     }
     public void EvaluateMenu()

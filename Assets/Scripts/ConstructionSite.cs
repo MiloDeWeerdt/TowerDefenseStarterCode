@@ -14,27 +14,41 @@ public class ConstructionSite
        
         public ConstructionSite(Vector3Int tilePosition, Vector3 worldPosition)
         {
-            // Wijs de tilePosition en worldPosition toe
             TilePosition = tilePosition;
             WorldPosition = new Vector3(worldPosition.x, worldPosition.y + 0.5f, worldPosition.z); // Pas de y-waarde aan
 
-            // Stel tower in op null
             tower = null;
         }
 
         public void SetTower(GameObject newTower, SiteLevel newLevel, TowerType newType)
         {
-            // Controleer of er al een tower is
             if (tower != null)
             {
-                // Verwijder de bestaande tower voordat je de nieuwe toewijst
                 GameObject.Destroy(tower);
             }
 
-            // Wijs de nieuwe tower toe
             tower = newTower;
             Level = newLevel;
             TowerType = newType;
+        
         }
-    
+    public Vector3 GetBuildPosition()
+    {
+        return WorldPosition; // Hier retourneer je de positie waar de toren moet worden gebouwd
+    }
+    public TowerType GetTowerType()
+    {
+        if (tower != null)
+        {
+            // Hieronder wordt aangenomen dat TowerType is opgeslagen als een eigenschap van het tower GameObject
+            Tower towerScript = tower.GetComponent<Tower>();
+            if (towerScript != null)
+            {
+                return towerScript.TowerType;
+            }
+        }
+        return TowerType.Onbebouwd;
+    }
+
+
 }

@@ -12,7 +12,10 @@ public class Tower : MonoBehaviour
     public TowerType type; // the type of this tower 
 
     private float attackTimer = 0f; // Timer to keep track of attack rate
-
+    public TowerType TowerType
+    {
+        get { return type; }
+    }
     // Draw the attack range in the editor for easier debugging 
     void OnDrawGizmosSelected()
     {

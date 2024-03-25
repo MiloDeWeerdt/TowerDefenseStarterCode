@@ -49,6 +49,60 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+    }
+    public void Build(TowerType type, SiteLevel level)
+    {
+        // Je kunt niet bouwen als er geen site is geselecteerd
+        if (selectedSite == null)
+        {
+            Debug.LogError("No construction site selected.");
+            return;
+        }
+
+        // Selecteer de juiste lijst op basis van het torentype
+        List<GameObject> towerList = null;
+        switch (type)
+        {
+            case TowerType.Archer:
+                towerList = Archers;
+                break;
+            case TowerType.Sword:
+                towerList = Swords;
+                break;
+            case TowerType.Wizard:
+                towerList = Wizards;
+                break;
+        }
+        if ((int)level >= towerList.Count || (int)level < 0)
+        {
+            Debug.LogWarning("Invalid tower level selected for the tower type: " + type);
+            return;
+        }
+
+        // Gebruik een switch met het niveau om een GameObject-toren te maken
+        GameObject towerPrefab = towerList[(int)level];
+        if (towerPrefab == null)
+        {
+            Debug.LogError("Tower prefab is null for type: " + type + " and level: " + level);
+            return;
+        }
+        // Haal de positie van de ConstructionSite op
+        Vector3 buildPosition = selectedSite.GetBuildPosition();
+
+        GameObject towerInstance = Instantiate(towerPrefab, buildPosition, Quaternion.identity);
+
+        // Configureer de geselecteerde site om de toren in te stellen
+        selectedSite.SetTower(towerInstance, level, type); // Voeg level en type toe als
+        towerMenu.SetSite(null);
+    }
+    public void DestroyTower()
+    {
+        if (selectedSite == null)
+        {
+            Debug.LogError("Er is geen bouwplaats geselecteerd. Kan de toren niet verwijderen.");
+            return;
+        }
     }
 }
+
