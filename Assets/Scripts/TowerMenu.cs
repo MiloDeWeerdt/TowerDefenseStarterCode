@@ -21,7 +21,7 @@ public class TowerMenu : MonoBehaviour
 
 
     private VisualElement root;
-
+    private ConstructionSite selectedSite;
 
 
     void Start()
@@ -147,9 +147,54 @@ public class TowerMenu : MonoBehaviour
 
 
     }
+    public void EvaluateMenu()
+    {
+        if (selectedSite == null)
+        {
+            return;
+        }
 
+        int siteLevel = (int)selectedSite.Level;
 
+        archerButton.SetEnabled(false);
+        wizardButton.SetEnabled(false);
+        swordButton.SetEnabled(false);
+        updateButton.SetEnabled(false);
+        destroyButton.SetEnabled(false);
 
+        switch (siteLevel)
+        {
+            case 0:
+                archerButton.SetEnabled(true);
+                wizardButton.SetEnabled(true);
+                swordButton.SetEnabled(true);
+                break;
+            case 1:
+            case 2:
+                updateButton.SetEnabled(true);
+                destroyButton.SetEnabled(true);
+                break;
+            case 3:
+                destroyButton.SetEnabled(true);
+                break;
+            default:
+                Debug.LogError("Invalid site level: " + selectedSite.Level);
+                break;
+        }
+    }
+    public void SetSite(ConstructionSite site)
+    {
+        selectedSite = site;
+
+        if (selectedSite == null)
+        {
+            root.visible = false;
+            return;
+        }
+
+        root.visible = true;
+        EvaluateMenu();
+    }
     private void OnDestroy()
 
     {
@@ -203,5 +248,4 @@ public class TowerMenu : MonoBehaviour
         }
 
     }
-
 }

@@ -163,6 +163,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 129374351}
+  - component: {fileID: 129374352}
+  - component: {fileID: 129374353}
   m_Layer: 0
   m_Name: TowerMenu
   m_TagString: Untagged
@@ -182,10 +184,37 @@ Transform:
   m_LocalPosition: {x: 2.741658, y: 0.2726536, z: 0.05587711}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1065839047}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &129374352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129374350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56fd8b338f3d9ad4096616123f7577a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &129374353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129374350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: a2a956d6814b8dc46a9dc0580bcf3188, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: d8ebe996eecacd74ab09fea28760dd2b, type: 3}
+  m_SortingOrder: 0
 --- !u!1 &321964005
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,6 +291,63 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2013557299}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &487842232
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 487842234}
+  - component: {fileID: 487842233}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &487842233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487842232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3558d6ae5adf30a4ba73b0c7ec5f4562, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TowerMenu: {fileID: 129374350}
+  Archers:
+  - {fileID: 6260443418514803871, guid: e3db4af13e8ca5544b007805ee0c66a1, type: 3}
+  - {fileID: 5487536896610302223, guid: 49b2d041a9541d5409b4c39b6a31bb1d, type: 3}
+  - {fileID: 5512071421688675151, guid: 2a31f2d77e60ee645a645603c1e33407, type: 3}
+  Swords:
+  - {fileID: 880387946105253969, guid: 22f9987f208ad18489c43473acd34fa3, type: 3}
+  - {fileID: 2169565330035720614, guid: 0869c390fcafa164e80c46a1b1f25231, type: 3}
+  - {fileID: 2547669888859418333, guid: 24ec7d4cb5d6e5a4b8919d3cdd4a134a, type: 3}
+  Wizards:
+  - {fileID: 1037069406432678467, guid: 2940adc739f5f114dbf4024dc954cfad, type: 3}
+  - {fileID: 4856504979477270589, guid: d26590511f9d94249af27786a4a03345, type: 3}
+  - {fileID: 9075842702940287679, guid: dee704b3725562f4096405a0e2242c21, type: 3}
+--- !u!4 &487842234
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487842232}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.2031875, y: 0.07245843, z: 0.6008749}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
@@ -479,54 +565,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2013557299}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1065839046
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1065839047}
-  - component: {fileID: 1065839048}
-  m_Layer: 0
-  m_Name: UIDocument
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1065839047
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1065839046}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 129374351}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1065839048
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1065839046}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PanelSettings: {fileID: 11400000, guid: a2a956d6814b8dc46a9dc0580bcf3188, type: 2}
-  m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 9197481963319205126, guid: d8ebe996eecacd74ab09fea28760dd2b, type: 3}
-  m_SortingOrder: 0
 --- !u!1 &1102024298
 GameObject:
   m_ObjectHideFlags: 0
@@ -6076,3 +6114,4 @@ SceneRoots:
   - {fileID: 1869446742}
   - {fileID: 2013557299}
   - {fileID: 129374351}
+  - {fileID: 487842234}

@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 3558d6ae5adf30a4ba73b0c7ec5f4562
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - TowerMenu: {fileID: 6854710561660665226, guid: c594967f27b18d54e8aeff79d1923813, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
