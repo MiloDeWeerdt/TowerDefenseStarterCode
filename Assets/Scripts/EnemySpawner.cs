@@ -26,6 +26,7 @@ public class EnemySpawner : MonoBehaviour
         var script = newEnemy.GetComponentInParent<Enemy>();
         script.path = path;
         script.target= Path1[1];
+        GameManager.Instance.AddInGameEnemy();
     }
     private int ufoCounter = 0;
 

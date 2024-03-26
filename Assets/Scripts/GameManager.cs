@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     private int currentWave;
     public TopMenu topMenu;
     private bool waveActive = false;
+    private int enemyInGameCounter = 0;
     // Start is called before the first frame update 
     void Start()
     {
@@ -91,7 +92,7 @@ public class GameManager : MonoBehaviour
         }
         Vector3 buildPosition = selectedSite.GetBuildPosition();
         GameObject towerInstance = Instantiate(towerPrefab, buildPosition, Quaternion.identity);
-        selectedSite.SetTower(towerInstance, level, type); 
+        selectedSite.SetTower(towerInstance, level, type);
         towerMenu.SetSite(null);
     }
     public void DestroyTower()
@@ -102,9 +103,9 @@ public class GameManager : MonoBehaviour
             return;
         }
     }
-    
 
-    
+
+
     public void StartGame()
     {
         credits = 200;
@@ -112,6 +113,7 @@ public class GameManager : MonoBehaviour
         currentWave = 0;
         UpdateTopMenuLabels();
         waveActive = false;
+        enemyInGameCounter = 0;
     }
 
     public void AttackGate()
@@ -138,6 +140,7 @@ public class GameManager : MonoBehaviour
         currentWave++;
         TopMenu.UpdateWaveLabel("Wave: " + (currentWave + 1));
         waveActive = true;
+        enemyInGameCounter = 0;
         EnemySpawner.Instance.StartWave(currentWave);
     }
 
@@ -157,7 +160,7 @@ public class GameManager : MonoBehaviour
         return currentWave;
     }
 
-    
+
     public int GetCredits()
     {
         return credits;
@@ -194,7 +197,27 @@ public class GameManager : MonoBehaviour
 
     private void EvaluateTowerMenu()
     {
-        towerMenu.EvaluateMenu(); 
+        towerMenu.EvaluateMenu();
+    }
+    public void AddInGameEnemy()
+    {
+        enemyInGameCounter++;
+    }
+    public void RemoveInGameEnemy()
+    {
+        enemyInGameCounter--;
+
+        if (!waveActive && enemyInGameCounter <= 0)
+        {
+            if (currentWave >= 0)
+            {
+                EndWave();
+            }
+            else
+            {
+                TopMenu.EnableWaveButton();
+            }
+        }
     }
 }
 
