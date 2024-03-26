@@ -77,43 +77,23 @@ public class TileClickDetector : MonoBehaviour
     void Update()
 
     {
-
-        // Check for a left mouse button click 
-
         if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
-
         {
-
             DetectTileClicked();
-
         }
-
     }
-
-
-
     void DetectTileClicked()
 
     {
 
-        // Convert mouse click position to world space 
+         
 
         Vector3 mouseWorldPos = cam.ScreenToWorldPoint(Input.mousePosition);
 
-        mouseWorldPos.z = 0; // Ensure the z-position is set correctly for 2D 
-
-
-
-        // Convert world position to tilemap cell position 
-
+        mouseWorldPos.z = 0;
         Vector3Int cellPosition = tilemap.WorldToCell(mouseWorldPos);
 
-        cellPosition.z = 0; // don't know why this is needed 
-
-
-
-        // Check if the clicked cell contains a tile 
-
+        cellPosition.z = 0;
         TileBase clickedTile = tilemap.GetTile(cellPosition);
 
 
@@ -121,13 +101,6 @@ public class TileClickDetector : MonoBehaviour
         if (clickedTile != null)
 
         {
-
-            // Tile was clicked - you can check specific properties or tile types here 
-
-
-
-            // Example: Check for a specific tile (by name, for instance) 
-
             if (clickedTile.name == "buildingPlaceGrass")
 
             {

@@ -27,7 +27,41 @@ public class EnemySpawner : MonoBehaviour
         script.path = path;
         script.target= Path1[1];
     }
-    
+    private int ufoCounter = 0;
+
+    public void StartWave(int number)
+    {
+        ufoCounter = 0;
+
+        switch (number)
+        {
+            case 1:
+                InvokeRepeating("StartWave1", 1f, 1.5f);
+                break;
+        }
+    }
+
+    public void StartWave1()
+    {
+        ufoCounter++;
+
+        if (ufoCounter % 6 <= 1) return;
+
+        if (ufoCounter < 30)
+        {
+            SpawnEnemy(0, Path.Path1);
+        }
+        else
+        {
+            SpawnEnemy(1, Path.Path1);
+        }
+
+        if (ufoCounter > 30)
+        {
+            CancelInvoke("StartWave1");
+            GameManager.Instance.EndWave();
+        }
+    }
     void Start()
     {
         InvokeRepeating("SpawnTester", 1f, 1f);

@@ -43,11 +43,20 @@ public class TopMenu : MonoBehaviour
     }
     public void WaveButton_clicked()
     {
-        GameManager.Instance.StartWave();
-        startWaveButton.SetEnabled(true);
+        if (!GameManager.Instance.IsWaveActive())
+        {
+            GameManager.Instance.StartWave();
+            DisableWaveButton();
+        }
     }
+
+    public void DisableWaveButton()
+    {
+        waveButton.interactable = false;
+    }
+
     public void EnableWaveButton()
     {
-        startWaveButton.SetEnabled(true);
+        waveButton.interactable = true;
     }
 }

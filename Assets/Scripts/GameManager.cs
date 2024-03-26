@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogError("TowerMenu reference is not set in GameManager.");
         }
+        StartGame();
 
     }
     public void SelectSite(ConstructionSite site)
@@ -110,6 +111,7 @@ public class GameManager : MonoBehaviour
         health = 10;
         currentWave = 0;
         UpdateTopMenuLabels();
+        waveActive = false;
     }
 
     public void AttackGate()
@@ -131,7 +133,31 @@ public class GameManager : MonoBehaviour
         UpdateTopMenuLabels();
         EvaluateTowerMenu();
     }
+    public void StartWave()
+    {
+        currentWave++;
+        TopMenu.UpdateWaveLabel("Wave: " + (currentWave + 1));
+        waveActive = true;
+        EnemySpawner.Instance.StartWave(currentWave);
+    }
 
+    public void EndWave()
+    {
+        waveActive = false;
+        TopMenu.EnableWaveButton();
+    }
+
+    public bool IsWaveActive()
+    {
+        return waveActive;
+    }
+
+    public int GetCurrentWave()
+    {
+        return currentWave;
+    }
+
+    
     public int GetCredits()
     {
         return credits;
