@@ -22,6 +22,12 @@ public class GameManager : MonoBehaviour
     public List<GameObject> Swords = new List<GameObject>();
     public List<GameObject> Wizards = new List<GameObject>();
     private ConstructionSite selectedSite;
+    private int health;
+    private int credits;
+    private int wave;
+    private int currentWave;
+    public TopMenu topMenu;
+    private bool waveActive = false;
     // Start is called before the first frame update 
     void Start()
     {
@@ -103,6 +109,30 @@ public class GameManager : MonoBehaviour
             Debug.LogError("Er is geen bouwplaats geselecteerd. Kan de toren niet verwijderen.");
             return;
         }
+    }
+    public void StartGame()
+    {
+        // Stel de startwaarden in
+        credits = 500;
+        health = 10;
+        currentWave = 0; // Initialize with 0 to start with the first wave
+        TopMenu.UpdateTopMenuLabels(credits, health, currentWave + 1); // Update the labels with the correct wave index
+    }
+
+    public int GetCurrentWave()
+    {
+        return currentWave - 1; // Geef de huidige golfindex terug
+    }
+    public int GetCredits()
+    {
+        // Return het huidige aantal credits
+        return credits;
+    }
+    public void RemoveCredits(int amount)
+    {
+        // Verminder credits
+        credits -= amount;
+        topMenu.SetCreditsLabel("Credits: " + credits);
     }
 }
 
