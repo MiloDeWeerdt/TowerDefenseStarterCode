@@ -59,14 +59,11 @@ public class GameManager : MonoBehaviour
     }
     public void Build(TowerType type, SiteLevel level)
     {
-        // Je kunt niet bouwen als er geen site is geselecteerd
         if (selectedSite == null)
         {
             Debug.LogError("No construction site selected.");
             return;
         }
-
-        // Selecteer de juiste lijst op basis van het torentype
         List<GameObject> towerList = null;
         switch (type)
         {
@@ -85,21 +82,15 @@ public class GameManager : MonoBehaviour
             Debug.LogWarning("Invalid tower level selected for the tower type: " + type);
             return;
         }
-
-        // Gebruik een switch met het niveau om een GameObject-toren te maken
         GameObject towerPrefab = towerList[(int)level];
         if (towerPrefab == null)
         {
             Debug.LogError("Tower prefab is null for type: " + type + " and level: " + level);
             return;
         }
-        // Haal de positie van de ConstructionSite op
         Vector3 buildPosition = selectedSite.GetBuildPosition();
-
         GameObject towerInstance = Instantiate(towerPrefab, buildPosition, Quaternion.identity);
-
-        // Configureer de geselecteerde site om de toren in te stellen
-        selectedSite.SetTower(towerInstance, level, type); // Voeg level en type toe als
+        selectedSite.SetTower(towerInstance, level, type); 
         towerMenu.SetSite(null);
     }
     public void DestroyTower()
@@ -110,29 +101,74 @@ public class GameManager : MonoBehaviour
             return;
         }
     }
+    
+
+    
     public void StartGame()
     {
-        // Stel de startwaarden in
-        credits = 500;
+        credits = 200;
         health = 10;
-        currentWave = 0; // Initialize with 0 to start with the first wave
-        TopMenu.UpdateTopMenuLabels(credits, health, currentWave + 1); // Update the labels with the correct wave index
+        currentWave = 0;
+        UpdateTopMenuLabels();
     }
 
-    public int GetCurrentWave()
+    public void AttackGate()
     {
-        return currentWave - 1; // Geef de huidige golfindex terug
+        health--;
+        UpdateTopMenuLabels();
     }
-    public int GetCredits()
+
+    public void AddCredits(int amount)
     {
-        // Return het huidige aantal credits
-        return credits;
+        credits += amount;
+        UpdateTopMenuLabels();
+        EvaluateTowerMenu();
     }
+
     public void RemoveCredits(int amount)
     {
-        // Verminder credits
         credits -= amount;
-        topMenu.SetCreditsLabel("Credits: " + credits);
+        UpdateTopMenuLabels();
+        EvaluateTowerMenu();
+    }
+
+    public int GetCredits()
+    {
+        return credits;
+    }
+
+    public int GetCost(TowerType type, SiteLevel level, bool selling = false)
+    {
+        int cost = 0;
+        switch (type)
+        {
+            case TowerType.Archer:
+                cost = selling ? (int)(Archers[(int)level].GetComponent<Tower>().sellValue) : (int)(Archers[(int)level].GetComponent<Tower>().cost);
+                break;
+            case TowerType.Sword:
+                cost = selling ? (int)(Swords[(int)level].GetComponent<Tower>().sellValue) : (int)(Swords[(int)level].GetComponent<Tower>().cost);
+                break;
+            case TowerType.Wizard:
+                cost = selling ? (int)(Wizards[(int)level].GetComponent<Tower>().sellValue) : (int)(Wizards[(int)level].GetComponent<Tower>().cost);
+                break;
+        }
+        return cost;
+    }
+
+    public void EnemyReachedEnd(int points)
+    {
+        AttackGate();
+        AddCredits(points);
+    }
+
+    private void UpdateTopMenuLabels()
+    {
+        topMenu.UpdateTopMenuLabels(credits, health, currentWave + 1);
+    }
+
+    private void EvaluateTowerMenu()
+    {
+        towerMenu.EvaluateMenu(); 
     }
 }
 

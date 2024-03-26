@@ -135,7 +135,7 @@ public class TowerMenu : MonoBehaviour
     {
         if (selectedSite != null)
         {
-            SiteLevel nextLevel = selectedSite.Level + 1; // Verhoog het level met één.
+            SiteLevel nextLevel = selectedSite.Level + 1; 
             GameManager.Instance.Build(selectedSite.TowerType, nextLevel);
         }
 
@@ -162,7 +162,7 @@ public class TowerMenu : MonoBehaviour
         }
 
         int siteLevel = (int)selectedSite.Level;
-
+        int cost = GameManager.Instance.GetCost(selectedSite.TowerType, selectedSite.Level);
         archerButton.SetEnabled(false);
         wizardButton.SetEnabled(false);
         swordButton.SetEnabled(false);
@@ -172,13 +172,19 @@ public class TowerMenu : MonoBehaviour
         switch (siteLevel)
         {
             case 0:
-                archerButton.SetEnabled(true);
-                wizardButton.SetEnabled(true);
-                swordButton.SetEnabled(true);
+                if (GameManager.Instance.GetCredits() >= cost)
+                {
+                    archerButton.SetEnabled(true);
+                    wizardButton.SetEnabled(true);
+                    swordButton.SetEnabled(true);
+                }
                 break;
             case 1:
             case 2:
-                updateButton.SetEnabled(true);
+                if (GameManager.Instance.GetCredits() >= cost)
+                {
+                    updateButton.SetEnabled(true);
+                }
                 destroyButton.SetEnabled(true);
                 break;
             case 3:

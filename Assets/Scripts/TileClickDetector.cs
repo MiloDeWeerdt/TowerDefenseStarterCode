@@ -12,9 +12,9 @@ public class TileClickDetector : MonoBehaviour
 
 {
 
-    public Camera cam; // Assign your main camera here through the Inspector 
+    public Camera cam; 
 
-    public Tilemap tilemap; // Assign your tilemap here through the Inspector 
+    public Tilemap tilemap; 
 
 
 

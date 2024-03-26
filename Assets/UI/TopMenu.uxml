@@ -1,9 +1,9 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/TopMenu.uss?fileID=7433441132597879392&amp;guid=452acdfb775bcfc4ba3f52430ec7577d&amp;type=3#TopMenu" />
-    <ui:VisualElement style="flex-grow: 1;">
-        <ui:Button text="Button" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Play-Button" class="button" style="white-space: normal; left: 85%; height: 37px; width: 81px;" />
-        <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Wave" text="Text" style="left: 85%; color: rgb(255, 255, 255);" />
-        <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Credits" text="Text" style="left: 85%; color: rgb(255, 255, 255);" />
-        <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Gate-Health" text="Text" style="left: 83%; color: rgb(255, 255, 255);" />
+    <ui:VisualElement class="label">
+        <ui:Button text="p" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Play-Button" enable-rich-text="true" class="button" style="white-space: normal; left: 85%; height: 37px; width: 81px;" />
+        <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Wave" class="label" style="left: 85%; color: rgb(255, 255, 255); height: -165px;" />
+        <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Credits" class="label" style="left: 85%; color: rgb(255, 255, 255);" />
+        <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Gate-Health" style="left: 83%; color: rgb(255, 255, 255);" />
     </ui:VisualElement>
 </ui:UXML>

@@ -4,47 +4,50 @@ using UnityEngine;
 
 public class TopMenu : MonoBehaviour
 {
-    public static TopMenu instance;
-
-    public Label waveLabel;
-    public Label creditsLabel;
-    public Label healthLabel;
+    public Label wavelabel;
+    public Label creditslabel;
+    public Label healthlabel;
     public Button startWaveButton;
-    private void Start()
+
+    public void UpdateTopMenuLabels(int credits, int health, int currentWave)
     {
-        
+        Debug.Log("Updating top menu labels: Credits: " + credits + ", Health: " + health + ", Wave: " + currentWave);
+        creditslabel.text = "Credits: " + credits;
+        healthlabel.text = "Health: " + health;
+        wavelabel.text = "Wave: " + currentWave;
+    }
+    private void Awake()
+    {
         var root = GetComponent<UIDocument>().rootVisualElement;
-        waveLabel = root.Q<Label>("waveLabel");
-        creditsLabel = root.Q<Label>("creditsLabel");
-        healthLabel = root.Q<Label>("healthLabel");
-        startWaveButton = root.Q<Button>("startWaveButton");
-        startWaveButton.clicked += OnStartWaveButtonClicked;
-        UpdateTopMenuLabels(GameManager.instance.GetCredits(), GameManager.instance.GetHealth(), GameManager.instance.GetCurrentWaveIndex());
+        startWaveButton = root.Q<Button>("start-button");
+        wavelabel = root.Q<Label>("wavelabel");
+        creditslabel = root.Q<Label>("creditslabel");
+        healthlabel = root.Q<Label>("healthlabel");
+
     }
-    // Functie om de labels bij te werken
-    public void UpdateTopMenuLabels(int credits, int health, int wave)
-    {
-        Debug.Log("Updating top menu labels: Credits: " + credits + ", Health: " + health + ", Wave: " + wave);
-        creditsLabel.text = "Credits: " + credits; 
-        healthLabel.text = "Health: " + health;
-        waveLabel.text = "Wave: " + wave;
-    }
-    public void SetCreditsLabel(string text)
-    {
-        creditsLabel.text = text;
-    }
-    public void SetHealthLabel(string text)
-    {
-        healthLabel.text = text;
-    }
+
+
     public void SetWaveLabel(string text)
     {
-        waveLabel.text = text;
+        wavelabel.text = text;
     }
-    private void OnStartWaveButtonClicked()
+
+    public void SetCreditsLabel(string text)
     {
-        int currentWaveIndex = GameManager.instance.GetCurrentWaveIndex();
-        int nextWaveIndex = currentWaveIndex + 1;
-        GameManager.instance.StartWave(nextWaveIndex);
+        creditslabel.text = text;
+    }
+
+    public void SetHealthLabel(string text)
+    {
+        healthlabel.text = text;
+    }
+    public void WaveButton_clicked()
+    {
+        GameManager.Instance.StartWave();
+        startWaveButton.SetEnabled(true);
+    }
+    public void EnableWaveButton()
+    {
+        startWaveButton.SetEnabled(true);
     }
 }

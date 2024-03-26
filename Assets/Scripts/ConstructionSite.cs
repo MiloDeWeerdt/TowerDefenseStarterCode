@@ -15,7 +15,7 @@ public class ConstructionSite
         public ConstructionSite(Vector3Int tilePosition, Vector3 worldPosition)
         {
             TilePosition = tilePosition;
-            WorldPosition = new Vector3(worldPosition.x, worldPosition.y + 0.5f, worldPosition.z); // Pas de y-waarde aan
+            WorldPosition = new Vector3(worldPosition.x, worldPosition.y + 0.5f, worldPosition.z); 
 
             tower = null;
         }
@@ -34,13 +34,12 @@ public class ConstructionSite
         }
     public Vector3 GetBuildPosition()
     {
-        return WorldPosition; // Hier retourneer je de positie waar de toren moet worden gebouwd
+        return WorldPosition; 
     }
     public TowerType GetTowerType()
     {
         if (tower != null)
         {
-            // Hieronder wordt aangenomen dat TowerType is opgeslagen als een eigenschap van het tower GameObject
             Tower towerScript = tower.GetComponent<Tower>();
             if (towerScript != null)
             {

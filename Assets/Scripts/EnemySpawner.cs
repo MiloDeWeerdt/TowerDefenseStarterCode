@@ -24,7 +24,6 @@ public class EnemySpawner : MonoBehaviour
     {
         var newEnemy = Instantiate(Enemies[type], Path1[0].transform.position, Path1[0].transform.rotation);
         var script = newEnemy.GetComponentInParent<Enemy>();
-        // set hier het path en target voor je enemy in 
         script.path = path;
         script.target= Path1[1];
     }
